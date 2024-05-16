@@ -105,8 +105,109 @@
 #         print(num, val)
 # func(a=12, b=122, name='sfes')
 
-def student(name, **lessons):
-    print(f"hello, {name}")
-    for names, times in lessons.items():
-        print(f"{names} : {times}")
-student('Oomat', chemstry =4, math=7, kyrgyzlang= 5)
+# def student(name, **lessons):
+#     print(f"hello, {name}")
+#     for names, times in lessons.items():
+#         print(f"{names} : {times}")
+# student('Oomat', chemstry =4, math=7, kyrgyzlang= 5)
+
+
+# вложеные функции
+
+# def main(name):
+#     print('hello')
+#     def inner():
+#         print('hello', name)
+#     inner()
+
+# main('oomat')
+
+
+
+# def my_func(integer):
+#     def inner(num):
+#         return integer + num
+#     res = inner(100)
+#     print(res)
+# my_func(100)
+
+
+# def total_callory():
+#     p = products
+#     def count_callory(p):
+#         res = 0
+#         for i in p.values():
+#             res+=i
+#         return res
+#     print(count_callory(p))
+
+# products = {
+#     'aplle':108,
+#     'bread':200,
+#     'egg':300
+# }
+
+# total_callory()
+
+
+# closure  замыкание
+
+
+# def sum(a):
+#     def inner(b):
+#         return a + b
+#     return inner
+
+# inner = sum(1)
+# print(inner(10))
+# print(inner(500))
+# print(inner(110))
+
+# def sum():
+#     a = 100
+#     def inner(b):
+#         return a + b
+#     return inner
+# s = sum()
+# print(s(50))
+
+
+
+# decorators
+
+
+# def decorator(func):
+#     def inner():
+#         print('hello')
+#         func()
+#         print('finish')
+#     return inner
+
+# @decorator
+# def func():
+#     print("oomat")
+
+# func()
+
+
+
+import random 
+
+def unical(random_100):
+    def individual():
+        result = list(random_100())
+        res = random.choices(result, k=50)
+        res = list(set(res))
+        random.shuffle(res)
+        print(res)
+    return individual
+
+@unical
+def random_100():
+    lst = []
+    for i in range(100):
+        result = random.randint(10, 50)
+        lst.append(result)
+    return lst
+
+random_100()
